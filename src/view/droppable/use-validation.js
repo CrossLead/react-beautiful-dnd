@@ -17,6 +17,10 @@ function isBoolean(value: mixed): boolean {
   return typeof value === 'boolean';
 }
 
+function isNumber(value: mixed): boolean {
+  return typeof value === 'number';
+}
+
 function runChecks(args: Args, checks: CheckFn[]) {
   checks.forEach((check: CheckFn) => check(args));
 }
@@ -35,8 +39,8 @@ const shared: CheckFn[] = [
       'isDropDisabled must be a boolean',
     );
     invariant(
-      isBoolean(props.isCombineEnabled),
-      'isCombineEnabled must be a boolean',
+      isBoolean(props.isCombineEnabled) || isNumber(props.isCombineEnabled),
+      'isCombineEnabled must be a boolean or number',
     );
     invariant(
       isBoolean(props.ignoreContainerClipping),

@@ -39,7 +39,7 @@ type Props = {|
   mode: DroppableMode,
   direction: Direction,
   isDropDisabled: boolean,
-  isCombineEnabled: boolean,
+  isCombineEnabled: boolean | number,
   ignoreContainerClipping: boolean,
   getDroppableRef: () => ?HTMLElement,
 |};

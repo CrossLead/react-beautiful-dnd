@@ -137,7 +137,7 @@ export type DroppableDimension = {|
   descriptor: DroppableDescriptor,
   axis: Axis,
   isEnabled: boolean,
-  isCombineEnabled: boolean,
+  isCombineEnabled: boolean | number,
   // relative to the current viewport
   client: BoxModel,
   // relative to the whole page

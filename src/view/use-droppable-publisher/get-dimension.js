@@ -86,7 +86,7 @@ type Args = {|
   windowScroll: Position,
   direction: Direction,
   isDropDisabled: boolean,
-  isCombineEnabled: boolean,
+  isCombineEnabled: boolean | number,
   shouldClipSubject: boolean,
 |};
 

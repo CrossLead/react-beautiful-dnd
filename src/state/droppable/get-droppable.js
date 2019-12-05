@@ -24,7 +24,7 @@ export type Closest = {|
 type Args = {|
   descriptor: DroppableDescriptor,
   isEnabled: boolean,
-  isCombineEnabled: boolean,
+  isCombineEnabled: boolean | number,
   isFixedOnPage: boolean,
   direction: 'vertical' | 'horizontal',
   client: BoxModel,

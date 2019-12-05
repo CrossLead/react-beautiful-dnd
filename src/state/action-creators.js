@@ -125,7 +125,7 @@ export const updateDroppableIsEnabled = (
 
 export type UpdateDroppableIsCombineEnabledArgs = {|
   id: DroppableId,
-  isCombineEnabled: boolean,
+  isCombineEnabled: boolean | number,
 |};
 
 export type UpdateDroppableIsCombineEnabledAction = {|

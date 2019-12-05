@@ -26,7 +26,7 @@ export type DimensionMarshal = {|
   // it is also possible to update whether combining is enabled
   updateDroppableIsCombineEnabled: (
     id: DroppableId,
-    isEnabled: boolean,
+    isEnabled: boolean | number,
   ) => void,
   updateDroppableScroll: (id: DroppableId, newScroll: Position) => void,
   scrollDroppable: (id: DroppableId, change: Position) => void,

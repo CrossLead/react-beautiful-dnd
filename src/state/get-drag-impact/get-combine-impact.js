@@ -42,6 +42,7 @@ type IsCombiningWithArgs = {|
   displaceBy: Position,
   currentUserDirection: UserDirection,
   lastCombineImpact: ?CombineImpact,
+  combineRatio: ?boolean | number,
 |};
 
 const isCombiningWith = ({
@@ -52,11 +53,12 @@ const isCombiningWith = ({
   displaceBy,
   currentUserDirection,
   lastCombineImpact,
+  combineRatio,
 }: IsCombiningWithArgs): boolean => {
   const start: number = borderBox[axis.start] + displaceBy[axis.line];
   const end: number = borderBox[axis.end] + displaceBy[axis.line];
   const size: number = borderBox[axis.size];
-  const twoThirdsOfSize: number = size * 0.666;
+  const combineSize: number = size * (typeof combineRatio === 'number' ? combineRatio : 0.666);
 
   const whenEntered: UserDirection = getWhenEntered(
     id,
@@ -68,10 +70,10 @@ const isCombiningWith = ({
 
   if (isMovingForward) {
     // combine when moving in the front 2/3 of the item
-    return isWithin(start, start + twoThirdsOfSize)(targetCenter);
+    return isWithin(start, start + combineSize)(targetCenter);
   }
   // combine when moving in the back 2/3 of the item
-  return isWithin(end - twoThirdsOfSize, end)(targetCenter);
+  return isWithin(end - combineSize, end)(targetCenter);
 };
 
 function tryGetCombineImpact(impact: DragImpact): ?CombineImpact {
@@ -131,6 +133,7 @@ export default ({
         displaceBy,
         currentUserDirection: userDirection,
         lastCombineImpact,
+        combineRatio: destination.isCombineEnabled,
       });
     },
   );
